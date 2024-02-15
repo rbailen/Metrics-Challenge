@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    es.rbailen.sample.metricschallenge: info
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jpa:
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: update
+    open-in-view: false
+    generate-ddl: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=- 1;DB_CLOSE_ON_EXIT=FALSE
+    username: test
+    password: test
+    driverClassName: org.h2.Driver
+
+  management:
+    endpoints:
+      health:
+        enabled: true
