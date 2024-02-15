@@ -43,6 +43,18 @@ public class GetProductsUseCaseTest {
     }
 
     @Test
+    void getProductSalesWithSalesUnitsAndWeightZeroWithOneStrategy() {
+        List<Metric> metrics = Arrays.asList(
+                Metric.builder().metric(MetricType.SALES_UNITS).weight(0).build()
+        );
+
+        List<Product> products = getProductsUseCase.getProducts(metrics);
+
+        assertEquals(1, products.get(0).getId());
+        assertEquals("V-NECH BASIC SHIRT", products.get(0).getName());
+    }
+
+    @Test
     void getProductWithLowestStockWithOneStrategy() {
         List<Metric> metrics = Arrays.asList(
                 Metric.builder().metric(MetricType.STOCK_RATIO).weight(100).build()
